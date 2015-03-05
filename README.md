@@ -8,6 +8,7 @@ This is the official Android app for all of thenewboston video tutorials. App in
 
 ####Want to Join the Development Team?
 
+This app was created using thenewboston API which is currently in development. As of now, we are restricting API access to limited users only. You may [send me a message](https://www.thenewboston.com/profile.php?user=2) if you would like a developer key.
 
 ***
 
