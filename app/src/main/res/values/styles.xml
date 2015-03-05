@@ -1,0 +1,13 @@
+<resources>
+
+    <color name="dark_blue">#006699</color>
+    <color name="grey_bg">#ddd</color>
+
+    <!-- Base theme - applied to the entire app in the Manifest -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/grey_bg</item>
+    </style>
+
+    <style name="BlackNoTitleBarTheme" parent="android:Theme.Black.NoTitleBar" />
+
+</resources>

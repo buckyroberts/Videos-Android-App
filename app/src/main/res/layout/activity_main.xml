@@ -1,0 +1,34 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Main content -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.thenewboston.thenewboston.MainActivity">
+
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar" />
+
+        <FrameLayout
+            android:id="@+id/mainFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/app_bar"
+            tools:context="com.thenewboston.thenewbostonvideotutorials.ui.MainActivity" />
+    </RelativeLayout>
+
+    <!-- Navigation Drawer -->
+    <fragment
+        android:id="@+id/left_drawer"
+        android:name="com.thenewboston.navigation.NavigationDrawer"
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        tools:layout="@layout/navigation_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
