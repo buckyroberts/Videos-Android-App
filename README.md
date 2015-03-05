@@ -4,6 +4,8 @@ This is the official Android app for all of thenewboston video tutorials. App in
 
 [thenewboston Videos on Google Play](https://play.google.com/store/apps/details?id=com.thenewboston.thenewbostonvideotutorials&hl=en)
 
+![](http://i.imgur.com/clpy8NN.png)
+
 ***
 
 ####Want to Join the Development Team?
