@@ -20,9 +20,9 @@ public class MainActivity extends ActionBarActivity {
     //ArrayLists to hold NavigationDrawer items
     private ArrayList<NavigationDrawerItem> parentItems = new ArrayList<>();
     private VideoCategoriesFragment fragment;
-    private String[] subjectTitles = {"Computer Science", "Math", "Science", "Social Sciences", "Humanities", "Business"};
-    private int[] subjectIds = {0, 2, 3, 4, 5, 6};
-    private int[] shapeColors = {0xff33B5E5, 0xff9933CC, 0xff669900, 0xffCC0000, 0xffFF8800, 0xff0099CC};
+    private String[] subjectTitles = {"Beauty", "Business", "Computer Science", "Cooking", "Humanities", "Math", "Science", "Social Sciences"};
+    private int[] subjectIds = {8, 6, 0, 7, 5, 2, 3, 4};
+    private int[] shapeColors = {0xff3a829b, 0xffa94545, 0xffaf6363, 0xffc89351, 0xff69aecb, 0xff6e8f5a, 0xff425e90, 0xffa2c5d8};
     private DrawerLayout drawerLayout;
 
     @Override
@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
     private void initCategoriesFragment() {
         fragment = VideoCategoriesFragment.newInstance();
         getFragmentManager().beginTransaction().replace(R.id.mainFragment, fragment).commit();
-        int currentSubjectIndex = 0;
+        int currentSubjectIndex = 2;
         showCategoriesFragmentFor(subjectIds[currentSubjectIndex]);
         setTitle(subjectTitles[currentSubjectIndex]);
     }
@@ -88,5 +88,6 @@ public class MainActivity extends ActionBarActivity {
             parentItems.add(item);
         }
     }
+
 
 }

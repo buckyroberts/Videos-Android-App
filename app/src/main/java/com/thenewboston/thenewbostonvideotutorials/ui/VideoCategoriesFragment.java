@@ -13,11 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.thenewboston.thenewbostonvideotutorials.R;
 import com.thenewboston.thenewbostonvideotutorials.api.VideoAPIManager;
 import com.thenewboston.thenewbostonvideotutorials.objects.VideoCategoryItem;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -34,10 +32,8 @@ public class VideoCategoriesFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_videocategories_list, container, false);
-
         // Set the adapter
         mAdapter = new CategoriesAdapter();
         ExpandableListView mListView = (ExpandableListView) view.findViewById(android.R.id.list);
@@ -56,18 +52,16 @@ public class VideoCategoriesFragment extends Fragment {
     }
 
     public void setSubjectId(int newSubjectId) {
-
-        if (this.subjectId == newSubjectId) return;
+        if (this.subjectId == newSubjectId)
+            return;
 
         this.subjectId = newSubjectId;
         VideoAPIManager.getCategoriesFor(subjectId, new VideoAPIManager.VideoCategoryLoaderListener() {
             @Override
             public void onSuccess(HashMap<VideoCategoryItem, ArrayList<VideoCategoryItem>> results) {
-
                 mAdapter.setData(results);
                 mAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onFailure(Error error) {
                 if (getActivity() == null) return;
@@ -77,19 +71,14 @@ public class VideoCategoriesFragment extends Fragment {
     }
 
     private class CategoriesAdapter extends BaseExpandableListAdapter {
-
-        private int[] shapeColors = {0xff0099CC, 0xff9933CC, 0xff669900, 0xffFF8800, 0xffCC0000, 0xff33B5E5, 0xffaa66cc, 0xff99cc00, 0xffffbb33,
-                0xffff4444};
-
+        private int[] shapeColors = {0xff3a829b, 0xffa94545, 0xff6e8f5a, 0xffc89351, 0xff6b5876, 0xff68abc8, 0xff425e90, 0xffa2c5d8, 0xffca8ea7, 0xff7e3838};
         private SortedSet<VideoCategoryItem> sortedSet;
         private HashMap<VideoCategoryItem, ArrayList<VideoCategoryItem>> categories = null;
 
         public CategoriesAdapter() {
-
         }
 
         public void setData(HashMap<VideoCategoryItem, ArrayList<VideoCategoryItem>> results) {
-
             categories = results;
             sortedSet = new TreeSet<VideoCategoryItem>(new Comparator() {
                 @Override
@@ -106,17 +95,14 @@ public class VideoCategoriesFragment extends Fragment {
         @Override
         public int getGroupCount() {
             if (categories == null) return 0;
-
             return categories.keySet().size();
         }
 
         @Override
         public int getChildrenCount(int groupPosition) {
             if (categories == null) return 0;
-
             Object key = sortedSet.toArray()[groupPosition];
             if (categories.get(key) == null) return 0;
-
             return categories.get(key).size();
         }
 
@@ -153,7 +139,6 @@ public class VideoCategoriesFragment extends Fragment {
 
         @Override
         public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-
             TextView textView;
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

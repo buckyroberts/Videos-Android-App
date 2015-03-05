@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Main top navigation bar -->
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#222">
+    android:background="#2e3a4a">
 
 </android.support.v7.widget.Toolbar>

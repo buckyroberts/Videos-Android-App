@@ -16,7 +16,6 @@
 <resources>
 
     <item name="player_view" type="id" />
-
     <string name="minVersion">minVersion</string>
     <string name="isLaunchableActivity">isLaunchableActivity</string>
     <string name="loggingTag">YoutubeAPIDemos</string>

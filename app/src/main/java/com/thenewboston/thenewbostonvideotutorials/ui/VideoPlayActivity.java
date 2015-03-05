@@ -86,7 +86,6 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     private VideosListAdapter listAdapter;
     private ArrayList<VideoItem> videos;
     private int currentIndex = -1;
-
     private int categoryId;
     private String categoryName;
     private TextView navigationTitleTextView;

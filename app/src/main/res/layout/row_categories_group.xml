@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Expandable lists -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#fff"
+        android:background="#f6f6f6"
         android:orientation="horizontal" />
 
     <LinearLayout
@@ -37,14 +39,14 @@
             android:textAlignment="viewStart"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#fbfbfb"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <View
         android:id="@+id/shadowView"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/shadow_bg" />
+        android:layout_height="0dp"
+        android:background="#40FFFFFF" />
 
 </LinearLayout>

@@ -43,7 +43,7 @@
             android:id="@+id/fullscreenPlayControlLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#a333"
+            android:background="#fff"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp"
@@ -111,7 +111,7 @@
                 android:ellipsize="marquee"
                 android:lines="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#333333"
+                android:textColor="#555555"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -125,10 +125,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
                     android:layout_weight="1"
-                    android:background="@drawable/button_bg"
                     android:padding="10dp"
                     android:text="&lt; Previous"
-                    android:textColor="@color/button_text_color" />
+                    android:textColor="@color/button_text_color"
+                    android:background="@drawable/button_bg" />
 
                 <Button
                     android:id="@+id/nextVideoButton"
@@ -147,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#ddd">
+            android:background="#eee">
 
             <ListView
                 android:id="@+id/allVideoslistView"
@@ -156,9 +156,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="#fff"
+                android:background="#cccccc"
                 android:divider="#0000"
-                android:dividerHeight="0dp" />
+                android:dividerHeight="0dp"
+                android:padding="1px" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
