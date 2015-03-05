@@ -1,4 +1,4 @@
-####Android App for thenewboston Videos & Tutorials
+###Android App for thenewboston Videos & Tutorials
 
 This is the official Android app for all of thenewboston video tutorials. App includes courses in computer programming, web design, photoshop, game development, and more!
 
