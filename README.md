@@ -36,3 +36,7 @@ This app was created using thenewboston API which is currently in development. A
 ![](http://i.imgur.com/017fSzB.png)
 
 7 - You can now Build and Run the app!
+
+***
+
+Thank you to Wu Xiaodong and Eric So for the original development of the app!
