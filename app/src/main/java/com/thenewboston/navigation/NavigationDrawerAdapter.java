@@ -11,9 +11,7 @@ import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.thenewboston.thenewbostonvideotutorials.R;
-
 import java.util.ArrayList;
 
 public class NavigationDrawerAdapter extends BaseExpandableListAdapter {

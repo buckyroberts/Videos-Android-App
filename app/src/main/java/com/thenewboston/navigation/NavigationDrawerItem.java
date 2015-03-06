@@ -1,9 +1,7 @@
 package com.thenewboston.navigation;
 
-/**
- * Created by Administrator on 1/16/15.
- */
 public class NavigationDrawerItem {
+
     private String itemTitle;
     private int itemIconResourceId;
     private int badgeNumber;
@@ -45,4 +43,5 @@ public class NavigationDrawerItem {
     public void setShapeColor(int color) {
         shapeColor = color;
     }
+
 }
