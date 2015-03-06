@@ -36,7 +36,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -49,9 +48,7 @@ import com.thenewboston.thenewbostonvideotutorials.R;
 import com.thenewboston.thenewbostonvideotutorials.api.DeveloperKey;
 import com.thenewboston.thenewbostonvideotutorials.api.VideoAPIManager;
 import com.thenewboston.thenewbostonvideotutorials.objects.VideoItem;
-
 import java.util.ArrayList;
-
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
@@ -74,53 +71,39 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     private YouTubePlayerView playerView;
     private YouTubePlayer player;
     private View otherViews;
-
     private boolean fullscreen;
-
     private LinearLayout navigationBar;
     private LinearLayout playControlLayout;
     private TextView currentVideoTitle, currentVideoTitle2;
     private Button prevVideo, nextVideo;
     private Button prevVideo2, nextVideo2;
     private ListView allVideosListView;
-    private VideosListAdapter listAdapter;
     private ArrayList<VideoItem> videos;
     private int currentIndex = -1;
-    private int categoryId;
-    private String categoryName;
     private TextView navigationTitleTextView;
     private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_fullscreen_videoplayer);
-
         findViewsAndBind();
-
         setClickListeners();
-
         doLayout();
-
         initImageLoader();
-
-        categoryId = getIntent().getIntExtra(VideoPlayActivity.CATEGORY_ID, -1);
-        categoryName = getIntent().getStringExtra(VideoPlayActivity.CATEGORY_NAME);
+        int categoryId = getIntent().getIntExtra(VideoPlayActivity.CATEGORY_ID, -1);
+        String categoryName = getIntent().getStringExtra(VideoPlayActivity.CATEGORY_NAME);
         navigationTitleTextView.setText(categoryName + " Tutorials");
         loadVideosFor(categoryId);
     }
 
     private void initImageLoader() {
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true).cacheOnDisk(true).build();
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-                this).defaultDisplayImageOptions(defaultOptions).build();
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).defaultDisplayImageOptions(defaultOptions).build();
         ImageLoader.getInstance().init(config);
     }
 
     private void findViewsAndBind() {
-
         navigationBar = (LinearLayout) findViewById(R.id.navigationBar);
         backButton = (ImageButton) findViewById(R.id.navigationLeftButton);
         navigationTitleTextView = (TextView) findViewById(R.id.navigationTitleTextView);
@@ -191,10 +174,10 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     }
 
     @Override
-    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
-                                        boolean wasRestored) {
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
         this.player = player;
         setControlsEnabled();
+
         // Specify that we want to handle fullscreen behavior ourselves.
         player.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
         player.setOnFullscreenListener(this);
@@ -229,7 +212,7 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
             // GONE and the player should be laid out across the whole screen.
             playerParams.width = LayoutParams.MATCH_PARENT;
             playerParams.height = LayoutParams.MATCH_PARENT;
-//            playControlLayout.setVisibility(View.VISIBLE);
+            // playControlLayout.setVisibility(View.VISIBLE);
             navigationBar.setVisibility(View.GONE);
             otherViews.setVisibility(View.GONE);
         } else {
@@ -283,12 +266,10 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
             @Override
             public void onSuccess(ArrayList<VideoItem> results) {
                 videos = results;
-
                 currentIndex = -1;
                 setCurrentVideo(0);
                 createVideoListAdapter();
             }
-
             @Override
             public void onFailure(Error error) {
             }
@@ -296,7 +277,7 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     }
 
     private void createVideoListAdapter() {
-        listAdapter = new VideosListAdapter(this.videos);
+        VideosListAdapter listAdapter = new VideosListAdapter(this.videos);
         allVideosListView.setAdapter(listAdapter);
     }
 
@@ -365,13 +346,11 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-
             final VideoRowHolder holder;
 
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.row_videolist, null);
-
                 holder = new VideoRowHolder();
                 holder.textView = (TextView) convertView.findViewById(R.id.videoTitleTextView);
                 holder.imageView = (ImageView) convertView.findViewById(R.id.videoPreviewThumb);
@@ -382,16 +361,13 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
             }
 
             holder.textView.setText((position + 1) + " - " + getItem(position).getTitle());
-
             loadImageFor(holder, position);
-
             return convertView;
         }
 
         private void loadImageFor(final VideoRowHolder holder, final int position) {
             final String thumbUrl = getYoutubeVideoThumbUrl(getItem(position).getCode());
             holder.imageView.setTag(thumbUrl);
-
             holder.imageView.setImageBitmap(null);
             ImageLoader.getInstance().loadImage(
                     thumbUrl,
@@ -474,5 +450,8 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
             ImageView imageView;
             TextView textView;
         }
+
     }
+
+
 }

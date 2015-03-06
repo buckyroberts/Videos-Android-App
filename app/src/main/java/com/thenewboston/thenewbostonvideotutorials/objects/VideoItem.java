@@ -3,9 +3,6 @@ package com.thenewboston.thenewbostonvideotutorials.objects;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Administrator on 1/23/15.
- */
 public class VideoItem {
     private int videoId;
     private int categoryId;
@@ -29,31 +26,13 @@ public class VideoItem {
         return videoId;
     }
 
-    public void setVideoId(int videoId) {
-        this.videoId = videoId;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getCode() {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+
 }

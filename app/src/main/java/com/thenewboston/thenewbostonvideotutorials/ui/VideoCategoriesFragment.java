@@ -34,7 +34,6 @@ public class VideoCategoriesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_videocategories_list, container, false);
-        // Set the adapter
         mAdapter = new CategoriesAdapter();
         ExpandableListView mListView = (ExpandableListView) view.findViewById(android.R.id.list);
         mListView.setAdapter(mAdapter);
@@ -51,10 +50,10 @@ public class VideoCategoriesFragment extends Fragment {
         return view;
     }
 
+    //Create a sorted set of videos for a subject
     public void setSubjectId(int newSubjectId) {
         if (this.subjectId == newSubjectId)
             return;
-
         this.subjectId = newSubjectId;
         VideoAPIManager.getCategoriesFor(subjectId, new VideoAPIManager.VideoCategoryLoaderListener() {
             @Override
@@ -64,13 +63,17 @@ public class VideoCategoriesFragment extends Fragment {
             }
             @Override
             public void onFailure(Error error) {
-                if (getActivity() == null) return;
+                if (getActivity() == null)
+                    return;
                 Toast.makeText(getActivity(), error != null ? error.getMessage() : "Unknown Error Occurred", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+
+    //Adapter for video categories
     private class CategoriesAdapter extends BaseExpandableListAdapter {
+
         private int[] shapeColors = {0xff3a829b, 0xffa94545, 0xff6e8f5a, 0xffc89351, 0xff6b5876, 0xff68abc8, 0xff425e90, 0xffa2c5d8, 0xffca8ea7, 0xff7e3838};
         private SortedSet<VideoCategoryItem> sortedSet;
         private HashMap<VideoCategoryItem, ArrayList<VideoCategoryItem>> categories = null;
@@ -78,6 +81,7 @@ public class VideoCategoriesFragment extends Fragment {
         public CategoriesAdapter() {
         }
 
+        //Sort categories alphabetically
         public void setData(HashMap<VideoCategoryItem, ArrayList<VideoCategoryItem>> results) {
             categories = results;
             sortedSet = new TreeSet<VideoCategoryItem>(new Comparator() {
@@ -85,7 +89,6 @@ public class VideoCategoriesFragment extends Fragment {
                 public int compare(Object lhs, Object rhs) {
                     VideoCategoryItem item1 = (VideoCategoryItem) lhs;
                     VideoCategoryItem item2 = (VideoCategoryItem) rhs;
-
                     return item1.categoryName.compareTo(item2.categoryName);
                 }
             });
@@ -177,4 +180,6 @@ public class VideoCategoriesFragment extends Fragment {
         }
 
     }
+
+
 }

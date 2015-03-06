@@ -28,20 +28,16 @@ public class NavigationDrawerAdapter extends BaseExpandableListAdapter {
         this.childItems = children;
     }
 
-
     public void setInflater(LayoutInflater inflater, Activity activity) {
         this.inflater = inflater;
     }
 
-
     //Called automatically for each child view (implement per requirement)
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-
         ChildMenuHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.navigation_drawer_child, parent, false);
-
             holder = new ChildMenuHolder();
             holder.imageViewChildIcon = (ImageView) convertView.findViewById(R.id.childImage);
             holder.textViewChildName = (TextView) convertView.findViewById(R.id.textViewChild);
@@ -52,13 +48,12 @@ public class NavigationDrawerAdapter extends BaseExpandableListAdapter {
             holder = (ChildMenuHolder) convertView.getTag();
         }
 
-        NavigationDrawerItem item = (NavigationDrawerItem) getChild(groupPosition, childPosition);
         //Set the text
+        NavigationDrawerItem item = (NavigationDrawerItem) getChild(groupPosition, childPosition);
         holder.textViewChildName.setText(item.getItemTitle());
         holder.textViewBadge.setText(item.getBadgeNumber() + "");
         holder.layoutBadge.setVisibility(item.getBadgeNumber() > 0 ? View.VISIBLE : View.GONE);
         holder.imageViewChildIcon.setImageResource(item.getItemIconResourceId());
-
         return convertView;
     }
 
@@ -66,37 +61,36 @@ public class NavigationDrawerAdapter extends BaseExpandableListAdapter {
     //Called automatically for each parent item (implement per requirement)
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-
         GroupMenuHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.navigation_drawer_parent, parent, false);
-
             holder = new GroupMenuHolder();
             holder.imageViewGroupIcon = (ImageView) convertView.findViewById(R.id.imageViewGroupIcon);
             holder.textViewGroupName = (CheckedTextView) convertView.findViewById(R.id.textViewGroupName);
-            holder.imageViewExpaned = (ImageView) convertView.findViewById(R.id.imageViewExpanded);
+            holder.imageViewExpanded = (ImageView) convertView.findViewById(R.id.imageViewExpanded);
             holder.leftColorShapeView = convertView.findViewById(R.id.leftColorShapeView);
-
             Typeface face = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Medium.ttf");
             holder.textViewGroupName.setTypeface(face);
             convertView.setTag(holder);
         } else {
             holder = (GroupMenuHolder) convertView.getTag();
         }
+
         holder.textViewGroupName.setText(parentItems.get(groupPosition).getItemTitle());
         holder.textViewGroupName.setChecked(isExpanded);
+
         if (parentItems.get(groupPosition).getItemIconResourceId() == -1) {
             holder.imageViewGroupIcon.setVisibility(View.GONE);
         } else {
             holder.imageViewGroupIcon.setVisibility(View.VISIBLE);
             holder.imageViewGroupIcon.setImageResource(parentItems.get(groupPosition).getItemIconResourceId());
         }
+
         holder.leftColorShapeView.setBackgroundColor(parentItems.get(groupPosition).getShapeColor());
-        holder.imageViewExpaned.setVisibility(getChildrenCount(groupPosition) > 0 ? View.VISIBLE : View.GONE);
-        holder.imageViewExpaned.setImageResource(isExpanded ? R.drawable.menu_icon_group_expanded : R.drawable.menu_icon_group_collapsed);
+        holder.imageViewExpanded.setVisibility(getChildrenCount(groupPosition) > 0 ? View.VISIBLE : View.GONE);
+        holder.imageViewExpanded.setImageResource(isExpanded ? R.drawable.menu_icon_group_expanded : R.drawable.menu_icon_group_collapsed);
         return convertView;
     }
-
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
@@ -152,7 +146,7 @@ public class NavigationDrawerAdapter extends BaseExpandableListAdapter {
         View leftColorShapeView;
         ImageView imageViewGroupIcon;
         CheckedTextView textViewGroupName;
-        ImageView imageViewExpaned;
+        ImageView imageViewExpanded;
     }
 
     class ChildMenuHolder {
@@ -161,4 +155,6 @@ public class NavigationDrawerAdapter extends BaseExpandableListAdapter {
         TextView textViewBadge;
         LinearLayout layoutBadge;
     }
+
+
 }

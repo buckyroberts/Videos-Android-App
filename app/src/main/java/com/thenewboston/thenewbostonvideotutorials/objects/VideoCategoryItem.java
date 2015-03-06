@@ -3,8 +3,8 @@ package com.thenewboston.thenewbostonvideotutorials.objects;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 public class VideoCategoryItem {
+
     public int categoryId;
     public int parentId;
     public int subjectId;
@@ -28,4 +28,5 @@ public class VideoCategoryItem {
         }
         return item;
     }
+
 }
